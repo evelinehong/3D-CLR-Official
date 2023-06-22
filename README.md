@@ -3,6 +3,12 @@
 
 ![Pipeline](figs/3dclr.png)
 
+## TODO 
+* Currently the codes generate npz features. We'll add scripts to do attention between npz features and CLIP features.
+* We have uploaded the ground truth bounding boxes of rooms and objects of all scenes. We'll upload the nerf-predicted bounding boxes very soon.
+* Constantly updating the dataset folder. We are doing some last-step cleaning.
+* Depth and checkpoints take up a lot of space. Please email yninghong@gmail.com if you need them.
+
 ## Installation
 
 The whole pipeline contains three steps to obtain the 3D feature of a room. The first 
@@ -44,7 +50,7 @@ Afterwards, the multi-view RGB images along with depth and pose information will
 dataset structure:
 ```
 datadir
-  - 00009-vLpv2VX547B_0    # most rooms contain 1000 views while some contain less
+  - 00009-vLpv2VX547B_0    # most rooms contain 1000 views while some contain less. 00009-vLpv2VX547B means house 00009-vLpv2VX547B which is the same as HM3D dataset. _0 means it's the first room of the house
      - 0.png
      - 0_depth.npy
      - 0.json
@@ -74,6 +80,8 @@ We could then use run the following script to mask out the regions that do not f
 ```
 python mask_outside_room.py --room_name 00234-nACV8wLu1u5_10
 ```
+
+The dataset can be found in this [Google Drive Link](https://drive.google.com/drive/folders/1sFUHGjsBYwtyqy8K2zsHBeFZIx4NluQN?usp=sharing). We constantly updating this folder. Please email yninghong@gmail.com for more information.
 
 ## Training
 
