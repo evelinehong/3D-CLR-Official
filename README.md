@@ -38,7 +38,7 @@ pip install -r requirements.txt
 ```
 Or follow the guidance in the official repository of DVGO in https://github.com/sunset1995/DirectVoxGO.
 
-## Dataset
+## Data Generation Pipeline
 
 The code related to dataset processing is under the data\_engine directory.
 
@@ -46,42 +46,78 @@ We use Habitat to render the dataset. Please refer to [habitat-lab](https://gith
 ```
 python render_hm3d.py
 ```
-Afterwards, the multi-view RGB images along with depth and pose information will be rendered. We are expected to obtain the following 
-dataset structure:
-```
-datadir
-  - 00009-vLpv2VX547B_0    # most rooms contain 1000 views while some contain less. 00009-vLpv2VX547B means house 00009-vLpv2VX547B which is the same as HM3D dataset. _0 means it's the first room of the house
-     - 0.png
-     - 0_depth.npy
-     - 0.json
-     - 1.png
-     - 1_depth.npy
-     - 1.json
-     ...
-  - 00009-vLpv2VX547B_1
-     - 0.png
-     - 0_depth.npy
-     - 0.json
-     - 1.png
-     - 1_depth.npy
-     - 1.json
-     ...
-  ... 
-  - 00891-cvZr5TUy5C5_9
-     - 0.png
-     - 0_depth.npy
-     - 0.json
-     - 1.png
-     - 1_depth.npy
-     - 1.json
-     ...
-```
+Afterwards, the multi-view RGB images along with depth and pose information will be rendered. 
+
+
 We could then use run the following script to mask out the regions that do not fall inside the room bounding box:
 ```
 python mask_outside_room.py --room_name 00234-nACV8wLu1u5_10
 ```
 
-The dataset can be found in this [Google Drive Link](https://drive.google.com/drive/folders/1sFUHGjsBYwtyqy8K2zsHBeFZIx4NluQN?usp=sharing). We constantly updating this folder. Please email yninghong@gmail.com for more information.
+
+## Dataset:
+The dataset can be found in this [Google Drive Link](https://drive.google.com/drive/folders/1sFUHGjsBYwtyqy8K2zsHBeFZIx4NluQN?usp=sharing). We are constantly updating this folder. Please email yninghong@gmail.com for more information.
+The final dataset structure is like:
+```
+  -data   # multi-view images of single-room scenes
+    - 00009-vLpv2VX547B_0    # most rooms contain 1000 views while some contain less. 00009-vLpv2VX547B means house 00009-vLpv2VX547B which is the same as HM3D dataset. _0 means it's the first room of the house
+       - 0.png
+       - 0_depth.npy
+       - 0.json
+       - 1.png
+       - 1_depth.npy
+       - 1.json
+       ...
+    - 00009-vLpv2VX547B_1
+       - 0.png
+       - 0_depth.npy
+       - 0.json
+       - 1.png
+       - 1_depth.npy
+       - 1.json
+       ...
+    ... 
+    - 00891-cvZr5TUy5C5_9
+       - 0.png
+       - 0_depth.npy
+       - 0.json
+       - 1.png
+       - 1_depth.npy
+       - 1.json
+       ...
+  data_2  #multi-view images of two-room scenes
+    - 00009-vLpv2VX547B_0_1    # most rooms contain 1000 views while some contain less. 00009-vLpv2VX547B means house 00009-vLpv2VX547B which is the same as HM3D dataset. _0 means the first room of the house, _1 means the second rooms of the house. Meaning that this scene consists of two rooms of house 00009-vLpv2VX547B .
+       - 0.png
+       - 0_depth.npy
+       - 0.json
+       - 1.png
+       - 1_depth.npy
+       - 1.json
+  data_3   #multi-view images of two-room scenes
+    - 00009-vLpv2VX547B_0_1_2    # most rooms contain 1500 views while some contain less. 00009-vLpv2VX547B means house 00009-vLpv2VX547B which is the same as HM3D dataset. _0 means the first room of the house, _1 means the second room of the house, _3 means the third room of the house. Meaning that this scene consists of three rooms of house 00009-vLpv2VX547B .
+       - 0.png
+       - 0_depth.npy
+       - 0.json
+       - 1.png
+       - 1_depth.npy
+       - 1.json
+  data_whole  #multi-view images of whole-house scenes
+    - 00009-vLpv2VX547B
+       - 0.png
+       - 0_depth.npy
+       - 0.json
+       - 1.png
+       - 1_depth.npy
+       - 1.json
+  questions_train.json #questions and answers of training dataset
+  questions_val.json
+  questions_test.json
+  all_concepts.json #all concepts of the dataset
+  objects_bboxes_per_room.zip
+  room_bboxes_with_wallsrevised_axis.zip
+  concepts_per_room.zip 
+```
+
 
 ## Training
 
