@@ -55,7 +55,7 @@ python mask_outside_room.py --room_name 00234-nACV8wLu1u5_10
 ```
 
 
-## Dataset:
+## Dataset
 The dataset can be found in this [Google Drive Link](https://drive.google.com/drive/folders/1sFUHGjsBYwtyqy8K2zsHBeFZIx4NluQN?usp=sharing). We are constantly updating this folder. Please email yninghong@gmail.com for more information.
 The final dataset structure is like:
 ```
