@@ -159,6 +159,17 @@ python run.py --config configs/custom/00009-vLpv2VX547B_1.py
 Afterwards, the checkpoints and the rendered 3D feature for this room will be stored in the directory defined in the configuration file "./DVGO_feature/configs/custom/default_ubd_inward_facing.py".
 It is recommended that the log directory of the two configuration files in the second & third stages are the same. It will be easier to manage the experimental results.
 
+### Post Processing
+
+We have generated the neural field 3D features given the above. The following script is for the attention between 3D features and language 3D features and get the grounding results (ply).
+
+```
+cd post_process
+python attention_ground.py
+```
+
+It will generate two files: ply is for visualization of segmentation (grounding) and npy score is to store the category id with the maximum score for each point.
+Highly recommend delete the ceilings for visualization.
 
 ## Citation
 If you find our work useful, please consider citing:
