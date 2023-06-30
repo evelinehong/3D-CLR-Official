@@ -113,9 +113,9 @@ The final dataset structure is like:
   questions_val.json
   questions_test.json
   all_concepts.json #all concepts of the dataset
-  objects_bboxes_per_room.zip
-  room_bboxes_with_wallsrevised_axis.zip
-  concepts_per_room.zip 
+  objects_bboxes_per_room.zip  #object bounding boxes of each room
+  room_bboxes_with_wallsrevised_axis.zip  #room bounding boxes of the houses
+  single_room_concepts3_after_bboxes_after_replace.zip #Useful concepts of each room
 ```
 
 
