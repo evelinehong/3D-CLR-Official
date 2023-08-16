@@ -4,9 +4,6 @@
 ![Pipeline](figs/3dclr.png)
 
 ## TODO 
-* Currently the codes generate npz features. We'll add scripts to do attention between npz features and CLIP features.
-* We have uploaded the ground truth bounding boxes of rooms and objects of all scenes. We'll upload the nerf-predicted bounding boxes very soon.
-* Constantly updating the dataset folder. We are doing some last-step cleaning.
 * Depth and checkpoints take up a lot of space. Please email yninghong@gmail.com if you need them.
 
 ## Installation
