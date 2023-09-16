@@ -100,14 +100,6 @@ The final dataset structure is like:
        - 1.png
        - 1_depth.npy
        - 1.json
-  data_whole  #multi-view images of whole-house scenes
-    - 00009-vLpv2VX547B
-       - 0.png
-       - 0_depth.npy
-       - 0.json
-       - 1.png
-       - 1_depth.npy
-       - 1.json
   questions_train.json #questions and answers of training dataset
   questions_val.json
   questions_test.json
